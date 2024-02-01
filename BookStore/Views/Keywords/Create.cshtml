@@ -1,0 +1,42 @@
+﻿@model BookStore.Models.ViewModels.KeywordVm
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新增關鍵詞</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>KeywordVm</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-2">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-md-2" })
+            <!-- div class="col-md-10"-->
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <!-- /div -->
+        </div>
+
+        <div class="mb-2">
+            <!-- div class="col-md-offset-2 col-md-10"-->
+                <input type="submit" value="新增" class="btn btn-primary" />
+            <!-- /div -->
+        </div>
+    </div>
+}
+
+@*
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
